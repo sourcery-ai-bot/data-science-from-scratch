@@ -205,7 +205,7 @@ topic_counts = [0 for _ in range(K)]
 # a list of numbers, one for each document
 document_lengths = [len(document) for document in documents]
 
-distinct_words = set(word for document in documents for word in document)
+distinct_words = {word for document in documents for word in document}
 W = len(distinct_words)
 
 D = len(documents)
@@ -249,7 +249,7 @@ for d in range(D):
 
 import tqdm
 
-for iter in tqdm.trange(1000):
+for _ in tqdm.trange(1000):
     for d in range(D):
         for i, (word, topic) in enumerate(zip(documents[d],
                                               document_topics[d])):

@@ -12,7 +12,7 @@ def difference_quotient(f: Callable[[float], float],
     return (f(x + h) - f(x)) / h
 
 def square(x: float) -> float:
-    return x * x
+    return x**2
 
 def derivative(x: float) -> float:
     return 2 * x

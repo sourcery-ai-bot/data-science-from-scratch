@@ -394,11 +394,7 @@ def some_function_that_returns_a_string():
     return ""
 
 s = some_function_that_returns_a_string()
-if s:
-    first_char = s[0]
-else:
-    first_char = ""
-
+first_char = s[0] if s else ""
 first_char = s and s[0]
 
 safe_x = x or 0
@@ -459,8 +455,8 @@ increasing_pairs = [(x, y)                       # only pairs with x < y,
 assert len(increasing_pairs) == 9 + 8 + 7 + 6 + 5 + 4 + 3 + 2 + 1
 assert all(x < y for x, y in increasing_pairs)
 
-assert 1 + 1 == 2
-assert 1 + 1 == 2, "1 + 1 should equal 2 but didn't"
+assert 1 == 1
+assert 1 == 1, "1 + 1 should equal 2 but didn't"
 
 def smallest_item(xs):
     return min(xs)

@@ -178,7 +178,7 @@ topic_counts = [0 for _ in range(K)]
 
 document_lengths = map(len, documents)
 
-distinct_words = set(word for document in documents for word in document)
+distinct_words = {word for document in documents for word in document}
 W = len(distinct_words)
 
 D = len(documents)

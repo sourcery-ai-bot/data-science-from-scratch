@@ -581,7 +581,7 @@ def main():
         with tqdm.trange(3, n) as t:
             for i in t:
                 # i is prime if no smaller prime divides it.
-                i_is_prime = not any(i % p == 0 for p in primes)
+                i_is_prime = all(i % p != 0 for p in primes)
                 if i_is_prime:
                     primes.append(i)
 

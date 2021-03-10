@@ -126,13 +126,18 @@ def bottom_up_cluster(inputs, distance_agg=min):
     # as long as we have more than one cluster left...
     while len(clusters) > 1:
         # find the two closest clusters
-        c1, c2 = min([(cluster1, cluster2)
-                     for i, cluster1 in enumerate(clusters)
-                     for cluster2 in clusters[:i]],
-                     key=lambda p: cluster_distance(p[0], p[1], distance_agg))
+        c1, c2 = min(
+            (
+                (cluster1, cluster2)
+                for i, cluster1 in enumerate(clusters)
+                for cluster2 in clusters[:i]
+            ),
+            key=lambda p: cluster_distance(p[0], p[1], distance_agg),
+        )
+
 
         # remove them from the list of clusters
-        clusters = [c for c in clusters if c != c1 and c != c2]
+        clusters = [c for c in clusters if c not in [c1, c2]]
 
         # merge them, using merge_order = # of clusters left
         merged_cluster = (len(clusters), [c1, c2])

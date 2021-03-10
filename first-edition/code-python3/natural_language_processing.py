@@ -177,7 +177,7 @@ topic_counts = [0 for _ in range(K)]
 
 document_lengths = [len(d) for d in documents]
 
-distinct_words = set(word for document in documents for word in document)
+distinct_words = {word for document in documents for word in document}
 W = len(distinct_words)
 
 D = len(documents)
@@ -217,7 +217,7 @@ for d in range(D):
         topic_word_counts[topic][word] += 1
         topic_counts[topic] += 1
 
-for iter in range(1000):
+for _ in range(1000):
     for d in range(D):
         for i, (word, topic) in enumerate(zip(documents[d],
                                               document_topics[d])):
